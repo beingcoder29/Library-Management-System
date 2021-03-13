@@ -10,7 +10,7 @@ public class Stat extends javax.swing.JFrame {
      */
     public Stat() {
         initComponents();
-        setSize(695, 371);
+        setSize(700, 381);
         setLocationRelativeTo(null);
     }
 

@@ -20,7 +20,7 @@ public class Returnbook extends javax.swing.JFrame {
      */
     public Returnbook() {
         initComponents();
-        setSize(524, 375);
+        setSize(551, 393);
         setLocationRelativeTo(null);
     }
 
@@ -95,7 +95,7 @@ public class Returnbook extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Book Return");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 31, 136, 28));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 136, 28));
 
         jTextField1.setBackground(new java.awt.Color(255, 232, 140));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 93, 181, -1));

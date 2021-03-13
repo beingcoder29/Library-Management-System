@@ -31,8 +31,10 @@ public class NewBook extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -76,7 +78,7 @@ public class NewBook extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 207, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Book Entry");
@@ -91,7 +93,18 @@ public class NewBook extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 257, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, -1, -1));
+
+        jButton4.setBackground(new java.awt.Color(255, 232, 140));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton4.setText("DELETE");
+        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.lightGray, null, null));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 63, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,8 +115,9 @@ public class NewBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String bookID=jTextField1.getText();
+        
         String bookName=jTextField2.getText();
+        String bookID=jTextField1.getText()+"_"+bookName;
         String number=jTextField3.getText();
         
         try{
@@ -128,6 +142,27 @@ public class NewBook extends javax.swing.JFrame {
         setVisible(false);
             new Updatebook().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       String bookID=jTextField1.getText();
+        
+        
+        try{
+            //A Connection is the session between java application and database
+            Connection con=connectionpro.getCon();
+            //The Statement interface provides methods to execute queries with the database.
+            Statement st= con.createStatement();
+            st.executeUpdate("delete from book where bookID='"+bookID+"'");
+            JOptionPane.showMessageDialog(null,"Successfully Deleted");
+            setVisible(false);
+            new NewBook().setVisible(true);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Book Not Exists");
+            
+            
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +203,7 @@ public class NewBook extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
